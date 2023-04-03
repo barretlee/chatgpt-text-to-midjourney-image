@@ -11,7 +11,7 @@
 安装依赖后，直接执行：
 
 ```bash
-npm run dev
+OPENAI_KEY=${YOUR_KEY} npm run dev
 # or
 yarn dev
 # or

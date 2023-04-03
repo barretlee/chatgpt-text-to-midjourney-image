@@ -16,6 +16,19 @@
   text-transform: uppercase;
 }
 
+.title h2 {
+  font-size: 3rem;
+}
+
+.title p {
+  font-size: 12px;
+  color: #6666;
+  max-width: 800px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -40,7 +53,8 @@
   outline: none;
   resize: none;
   min-height: 100px;
-  width: 100%;
+  /* width: 100%; */
+  width: 20rem;
   transition: border 0.2s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

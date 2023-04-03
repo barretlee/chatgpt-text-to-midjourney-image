@@ -1,8 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# text2image
 
-## Getting Started
+> [replicate.com](https://replicate.com) 提供了 Model as a Service 的服务，大大降低了普通人玩 Machine Leaning 的门槛，写了一个小工具，将文案送给 ChatGPT 生成可用于图片模型的 Prompt 后，交给 replicate 服务生成图片。—— Barret李靖
 
-First, run the development server:
+<img src="https://user-images.githubusercontent.com/2698003/229572146-1480868c-7823-4ae0-add9-492d89316b76.png" width="800" />
+
+你可以将本项目直接部署到 Vercel，[点击部署](https://vercel.com/new/clone?s=https://github.com/barretlee/chatgpt-text-to-midjourney-image)
+
+## 启动和调试
+
+安装依赖后，直接执行：
 
 ```bash
 npm run dev
@@ -12,27 +18,21 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+然后浏览器打开 [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 参数设置
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+由于免费版的 Vercel 执行函数有市场限制，超过 10s 就直接掐断请求了，可以考虑将 [scripts/airecode-tex2image.js](./scripts/airecode-tex2image.js) 直接部署到 [aircode.io](https://aircode.cool/nfyiwynauv) 上，然后在网页添加 proxyUrl：
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+http://localhost:3000?proxyUrl=${YOUR_AIRCODE_PROJECT_URI}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+我已经在 aircode 上部署了一个副本：<https://aircode.cool/nfyiwynauv>，点击 copy 即可完成部署：
 
-## Learn More
+<img width="1000" src="https://user-images.githubusercontent.com/2698003/229573856-27ce77ca-43e7-4f84-a8fb-a9652ef7120a.png">
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](./LICENSE)

@@ -22,7 +22,7 @@ pnpm dev
 
 ## 参数设置
 
-由于免费版的 Vercel 执行函数有市场限制，超过 10s 就直接掐断请求了，可以考虑将 [scripts/airecode-tex2image.js](./scripts/airecode-tex2image.js) 直接部署到 [aircode.io](https://aircode.cool/nfyiwynauv) 上，然后在网页添加 proxyUrl：
+由于免费版的 Vercel 执行函数有市场限制，超过 10s 就直接掐断请求了，可以考虑将 `api/text2image` 的内容部署到 [aircode.io](https://aircode.cool/nfyiwynauv) 上，然后在网页添加 proxyUrl：
 
 ```bash
 http://localhost:3000?proxyUrl=${YOUR_AIRCODE_PROJECT_URI}
@@ -31,7 +31,6 @@ http://localhost:3000?proxyUrl=${YOUR_AIRCODE_PROJECT_URI}
 我已经在 aircode 上部署了一个副本：<https://aircode.cool/nfyiwynauv>，点击 copy 即可完成部署：
 
 <img width="1000" src="https://user-images.githubusercontent.com/2698003/229573856-27ce77ca-43e7-4f84-a8fb-a9652ef7120a.png">
-
 
 ## License
 

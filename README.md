@@ -1,6 +1,6 @@
 # text2image
 
-> [replicate.com](https://replicate.com) 提供了 Model as a Service 的服务，大大降低了普通人玩 Machine Leaning 的门槛，写了一个小工具，将文案送给 ChatGPT 生成可用于图片模型的 Prompt 后，交给 replicate 服务生成图片。—— Barret李靖
+> [replicate.com](https://replicate.com) 提供了 Model as a Service 的服务，大大降低了普通人玩 Machine Leaning 的门槛，写了一个小工具，将文案送给 ChatGPT 生成可用于图片模型的 Prompt 后，交给 replicate 服务生成图片。—— [Barret李靖](https://twitter.com/Barret_China/status/1642935199347638273)
 
 <img src="https://user-images.githubusercontent.com/2698003/229572146-1480868c-7823-4ae0-add9-492d89316b76.png" width="800" />
 

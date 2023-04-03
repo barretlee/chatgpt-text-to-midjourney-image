@@ -28,9 +28,30 @@ pnpm dev
 http://localhost:3000?proxyUrl=${YOUR_AIRCODE_PROJECT_URI}
 ```
 
+Replicate 上有很多生成好的模型，配置后可以直接运行，在这个工具中，你可以通过配置 url 参数更换 mode：
+
+```bash
+http://localhost:3000?m=${MODEL_FROM_REPLICATE}
+```
+
 我已经在 aircode 上部署了一个副本：<https://aircode.cool/nfyiwynauv>，点击 copy 即可完成部署：
 
 <img width="1000" src="https://user-images.githubusercontent.com/2698003/229573856-27ce77ca-43e7-4f84-a8fb-a9652ef7120a.png">
+
+## 了解 Replicate
+
+如果你只想了解 [Replicate](https://replicate.com/explore)，可以直接执行这份代码：
+
+```javascript
+cosnt main = async () => {
+  const replicate = await import('node-replicate');
+  # https://replicate.com/prompthero/openjourney
+  const model = 'prompthero/openjourney:9936c2001faa2194a261c01381f90e65261879985476014a0a37a334593a05eb'
+  const input = { prompt: "an astronaut riding on a horse" }
+  await replicate.default.run(model, input);
+}
+await main();
+```
 
 ## License
 

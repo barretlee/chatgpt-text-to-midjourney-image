@@ -22,7 +22,7 @@ pnpm dev
 
 ## 参数设置
 
-由于免费版的 Vercel 执行函数有市场限制，超过 10s 就直接掐断请求了，可以考虑将 `api/text2image` 的内容部署到 [aircode.io](https://aircode.cool/nfyiwynauv) 上，然后在网页添加 proxyUrl：
+由于免费版的 Vercel 执行函数有时长限制，超过 10s 就直接掐断请求了，可以考虑将 `api/text2image` 的内容部署到 [aircode.io](https://aircode.cool/nfyiwynauv) 上，然后在网页添加 proxyUrl：
 
 ```bash
 http://localhost:3000?proxyUrl=${YOUR_AIRCODE_PROJECT_URI}

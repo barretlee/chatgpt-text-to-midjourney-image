@@ -2,33 +2,24 @@ import { useState, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
-export function getServerSideProps() {
-  const serviceUrl = process.env.SERVICE_URL;
-  return {
-    props: { serviceUrl },
-  };
-}
-
-export default function Home(props) {
+export default function Home() {
   const [inputText, setInputText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [promptText, setPromptText] = useState('');
   const [imageModel, setImageModel] = useState('');
-  const [width, setWidth] = useState(1024);
-  const [height, setHeight] = useState(768);
+  const [direct, setDirect] = useState(false);
+  const [proxyUrl, setProxyUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  const { serviceUrl } = props;
 
   useEffect(() => {
     const model = 'prompthero/openjourney:9936c2001faa2194a261c01381f90e65261879985476014a0a37a334593a05eb';
     const urlSearchParams = new URLSearchParams(window.location.search);
     const m = urlSearchParams.get('m');
-    const h = urlSearchParams.get('h');
-    const w = urlSearchParams.get('w');
+    const direct = urlSearchParams.get('direct');
+    const proxyUrl = urlSearchParams.get('proxyUrl');
     setImageModel(m || model);
-    setWidth(w || 1000);
-    setHeight(h || 800);
+    setDirect(!!direct);
+    setProxyUrl(proxyUrl);
   }, []);
 
   const handleInputChange = useCallback((e) => {
@@ -40,7 +31,7 @@ export default function Home(props) {
     setImageUrl('');
     setPromptText('');
     try {
-      const response = await fetch(serviceUrl, {
+      const response = await fetch(proxyUrl || '/api/text2image', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,8 +40,7 @@ export default function Home(props) {
         body: JSON.stringify({
           prompt,
           image_model: imageModel,
-          height,
-          width,
+          direct,
         }),
       });
       const data = await response.json();
@@ -60,7 +50,7 @@ export default function Home(props) {
       console.error('Error fetching image:', error);
     }
     setIsLoading(false);
-  }, []);
+  }, [ proxyUrl ]);
 
   return (
     <>
@@ -76,16 +66,17 @@ export default function Home(props) {
         <div className={styles.container}>
           <div className={styles.inputContainer}>
             <textarea
+              defaultValue={promptText}
               className={styles.input}
               onChange={handleInputChange}
               placeholder="Enter text here"
             />
             <button className={styles.button} onClick={() => fetchImage(inputText)}>
-              {isLoading ? 'Loading...' : 'Generate'}
+              {isLoading ? 'Loading...' : 'text2image'}
             </button>
           </div>
           {promptText && <p className={styles.promptText}>Prompt: {promptText}</p>}
-          {imageUrl && <img className={styles.image} src={imageUrl} alt="Generated" />}
+          {imageUrl && <img className={styles.image} src={imageUrl} alt={promptText} />}
         </div>
       </main>
     </>

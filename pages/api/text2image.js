@@ -47,5 +47,5 @@ export default async function handler(req, res) {
   const [ url ] = await replicate.default.run(image_model, {
     prompt: generatedPrompt,
   });
-  return res.status(400).json({ url, text: generatedPrompt });;
+  return res.status(200).json({ url, text: generatedPrompt });;
 }
